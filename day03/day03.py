@@ -8,7 +8,9 @@ Short description:
  - Each row represents a rucksack with 2 compartments, each character represents an item.
  - First half of characters are in compartment 1, second half in compartment 2. 
  - Each rucksack has exactly 1 item appearing in both compartments.
- - Item priorities: {a-z: 1-26, A-Z: 27-52}, return sum of duplicate items. 
+ - Item priorities: {a-z: 1-26, A-Z: 27-52}.
+ - Part 1: Return sum of duplicate items in compartments 1 and 2 in each rucksack.
+ - Part 2: Return sum of badge priorities, 1 unique badge per 3 rows.
 """
 
 import pandas as pd
