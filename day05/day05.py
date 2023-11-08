@@ -1,10 +1,12 @@
 """
-Advent of Code 2022 Day 03
-https://adventofcode.com/2022/day/3
+Advent of Code 2022 Day 05
+https://adventofcode.com/2022/day/5
 AUTHOR: Alex Nazareth
 DATE:   November 2023
 Short description:
-- Find overlapping sections in each pair of section ranges.
+- Find final state of crate stacks given initial state and series of moves.
+- Part 1: Crane can only move one crate at a time.
+- Part 2: Crane can move multiple crates at a time (all crates from one move, ie one row).
 """
 
 import pandas as pd
@@ -35,7 +37,7 @@ def main(crates, moves, is_part1=True):
 
 if __name__=='__main__':
     infile = 'input.txt'
-    # infile = 'day05\input.txt'
+    
     indata = pd.read_csv(infile, header=None, dtype=str, skip_blank_lines=False)
     blank_row = np.where(pd.isnull(indata))[0][0]
     df = indata.loc[:blank_row-2,:]
@@ -47,7 +49,7 @@ if __name__=='__main__':
     crate_start_pos.columns = [i for i in range(9)]
     move_sequence = indata.loc[blank_row+1:,0].to_list()
 
-    # print("Part 1: The top crates are: " + str(main(crate_start_pos, move_sequence)))
+    print("Part 1: The top crates are: " + str(main(crate_start_pos, move_sequence)))
     print("Part 2: The top crates are: " + str(main(crate_start_pos, move_sequence, False)))
 
 

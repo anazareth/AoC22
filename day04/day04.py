@@ -1,6 +1,6 @@
 """
-Advent of Code 2022 Day 03
-https://adventofcode.com/2022/day/3
+Advent of Code 2022 Day 04
+https://adventofcode.com/2022/day/4
 AUTHOR: Alex Nazareth
 DATE:   November 2023
 Short description:
