@@ -4,6 +4,7 @@ https://adventofcode.com/2022/day/3
 AUTHOR: Alex Nazareth
 DATE:   November 2023
 Short description:
+- Find overlapping sections in each pair of section ranges.
 """
 
 import pandas as pd
