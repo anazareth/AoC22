@@ -31,7 +31,6 @@ def main(crates, moves, is_part1=True):
         else:
             stacks[target].extend(stacks[source][-qty:])
             stacks[source] = stacks[source][:-qty]
-    print(stacks)
     return ''.join([s[-1:][0] for s in stacks])
 
 
@@ -39,17 +38,23 @@ if __name__=='__main__':
     infile = 'input.txt'
     
     indata = pd.read_csv(infile, header=None, dtype=str, skip_blank_lines=False)
+    # locate divide between initial state and moves
     blank_row = np.where(pd.isnull(indata))[0][0]
+    # split, df is initial state matrix in text
     df = indata.loc[:blank_row-2,:]
     df2 = df.copy()
-    for i, row in df2.iterrows():
-        df2.loc[i,0] = ['|' if i%4==3 else c for i, c in enumerate(row[0])]
-    df3 = pd.DataFrame(df2[0].tolist(), index= df2.index)
-    crate_start_pos = df3[[4*i+1 for i in range(9)]]
+    # split each string into list of characters
+    df2[0] = df2[0].str.split('')  
+    # convert list of characters to columns
+    df3 = pd.DataFrame(df2[0].tolist())
+    # only keep columns with crate positions 
+    crate_start_pos = df3[[4*i+2 for i in range(9)]]
+    # reindex columns
     crate_start_pos.columns = [i for i in range(9)]
+    # store remaining rows as move sequence
     move_sequence = indata.loc[blank_row+1:,0].to_list()
-
-    print("Part 1: The top crates are: " + str(main(crate_start_pos, move_sequence)))
-    print("Part 2: The top crates are: " + str(main(crate_start_pos, move_sequence, False)))
+    
+    # print("Part 1: The top crates are: " + str(main(crate_start_pos, move_sequence)))
+    # print("Part 2: The top crates are: " + str(main(crate_start_pos, move_sequence, False)))
 
 
